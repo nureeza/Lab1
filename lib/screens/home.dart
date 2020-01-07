@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lap3/screens/login.dart';
+import 'package:lap3/screens/register.dart';
+import 'package:lap3/screens/secondPage.dart';
+import 'package:lap3/screens/thirdPage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,7 +22,7 @@ class _HomeState extends State<Home> {
             icon: Icon(
               Icons.email,
               size: 36.0,
-              color: Colors.purple[800],
+              color: Colors.green[600],
             ),
             labelText: 'Username',
             hintText: 'your@email.com'),
@@ -34,36 +38,50 @@ class _HomeState extends State<Home> {
             icon: Icon(
               Icons.vpn_key,
               size: 36.0,
-              color: Colors.purple[800],
+              color: Colors.green[600],
             ),
             labelText: 'Password',
             hintText: 'Mode 6 character'),
+            
       ),
     );
   }
 
   Widget buttonRegis() {
-    return RaisedButton.icon(
-      
-      icon: Icon(
-        Icons.account_circle,
-        color: Colors.purple[800],
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        icon: Icon(
+          Icons.account_circle,
+          color: Colors.green[400],
+        ),
+        color: Colors.brown[400],
+        label: Text('Login'),
+        onPressed: () {
+          var route = MaterialPageRoute(
+            builder: (BuildContext context) => loginPage());
+          Navigator.of(context).push(route);
+        },
       ),
-      color: Colors.green[800],
-      label: Text('Login'),
-      onPressed: () {},
     );
   }
 
   Widget buttonsRegis() {
-    return RaisedButton.icon(
-      icon: Icon(
-        Icons.screen_lock_landscape,
-        color: Colors.purple[800],
+    return Container(
+      width: 250.0,
+      child: RaisedButton.icon(
+        icon: Icon(
+          Icons.add_box,
+          color: Colors.green[400],
+        ),
+        color: Colors.brown[400],
+        label: Text('Register'),
+        onPressed: () {
+          var route = MaterialPageRoute(
+            builder: (BuildContext context) => RegisterPage());
+          Navigator.of(context).push(route);
+        },
       ),
-      color: Colors.green[800],
-      label: Text('Register'),
-      onPressed: () {},
     );
   }
 
@@ -91,11 +109,11 @@ class _HomeState extends State<Home> {
 
   Widget showAge() {
     return Text(
-      'อายุ21 ปี',
+      'นูรีซา เส็นบัตร',
       style: TextStyle(
           fontSize: 28.0,
           fontWeight: FontWeight.bold,
-          color: Colors.orange[300],
+          color: Colors.blue[300],
           fontStyle: FontStyle.italic),
     );
   }
@@ -108,8 +126,8 @@ class _HomeState extends State<Home> {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/backgrounds.png'),
-              ),
+                  image: AssetImage('images/background.jpg'),
+                  fit: BoxFit.cover),
             ),
             child: Center(
               child: Column(
@@ -117,7 +135,7 @@ class _HomeState extends State<Home> {
                 children: <Widget>[
                   showlogo(),
                   showName(),
-                  //showAge(),
+                  showAge(),
                   showAdddress(),
                   emailText(),
                   passwordText(),
