@@ -13,11 +13,12 @@ class _HomeState extends State<Home> {
   Widget showlogo() {
     return Image.asset('images/logoo.png');
   }
-
+var textEditController = new TextEditingController();
   Widget emailText() {
     return Container(
       width: 250.0,
       child: TextFormField(
+        controller: textEditController,
         decoration: InputDecoration(
             icon: Icon(
               Icons.email,
@@ -29,11 +30,12 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
+var textEditController1 = new TextEditingController();
   Widget passwordText() {
     return Container(
       width: 250.0,
       child: TextFormField(
+        controller: textEditController1,
         decoration: InputDecoration(
             icon: Icon(
               Icons.vpn_key,
@@ -59,7 +61,9 @@ class _HomeState extends State<Home> {
         label: Text('Login'),
         onPressed: () {
           var route = MaterialPageRoute(
-            builder: (BuildContext context) => loginPage());
+            builder: (BuildContext context) => loginPage(
+              valueFromloginPage: textEditController.text,valueFromloginPage1: textEditController1.text,
+            ));
           Navigator.of(context).push(route);
         },
       ),
